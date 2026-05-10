@@ -12,7 +12,7 @@ def run_pipeline():
         category = classify_article(title, summary)
         sentiment = analyzed_article['sentiment']["compound"]
 
-        updated_article = update_article(sentiment, category, id)
+        update_article(sentiment, category, id)
 
 if __name__ == '__main__':
     connection, cursor = get_connection()

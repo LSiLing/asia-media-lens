@@ -45,7 +45,27 @@ def get_unanalyzed_articles():
     cursor.execute(query)
     return cursor.fetchall()
 
+def get_sentiment():
+    connection, cursor = get_connection()
+    query = '''SELECT news.sentiment, news.category, news.tag FROM news
+        WHERE news.sentiment IS NOT NULL AND news.category IS NOT NULL
+    '''
+    cursor.execute(query)
+    return cursor.fetchall()
 
+def get_tag_and_cat():
+    connection, cursor = get_connection()
+    query = '''SELECT news.tag, news.category FROM news
+            WHERE news.sentiment IS NOT NULL AND news.category IS NOT NULL'''
+    cursor.execute(query)
+    return cursor.fetchall()
+
+def get_infkey():
+    connection, cursor = get_connection()
+    query = '''SELECT news.tag, news.title, news.summary FROM news
+    WHERE news.sentiment IS NOT NULL AND news.category IS NOT NULL'''
+    cursor.execute(query)
+    return cursor.fetchall()
 
 if __name__ == '__main__':
    connection, cursor = get_connection()

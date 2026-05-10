@@ -22,6 +22,6 @@ def collect_news():
 if __name__ == '__main__':
     connection, cursor = get_connection()
     collect_news()
-    query = '''SELECT news.title, news.summary FROM news '''
+    query = '''SELECT COUNT(*) FROM news '''
     cursor.execute(query)
     print(cursor.fetchall())
